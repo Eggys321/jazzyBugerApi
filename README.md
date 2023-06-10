@@ -14,3 +14,4 @@ Its an api for burgers
 Use npm run dev to run the server for development stage,install the techs listed above
 
 #### HOW TO USE THE PROJECT
+http://localhost:6060/jazzyburger/all
