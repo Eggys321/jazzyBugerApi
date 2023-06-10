@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jazzyBurgerRouter = require('./routers/jazzyBurgerRouter')
 
+const port = process.env.PORT || 6060
 require('dotenv/config')
 app.use(cors())
 app.use(express.json())
-const port = process.env.PORT || 6060
 
 mongoose.connect(process.env.DBURL)
 .then(()=>console.log('DB connected successfully'))
