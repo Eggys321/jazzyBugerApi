@@ -9,10 +9,20 @@ const port = process.env.PORT || 6060
 require('dotenv/config')
 app.use(cors())
 app.use(express.json())
+const db_url = process.env.DBURL
 
-mongoose.connect(process.env.DBURL)
-.then(()=>console.log('DB connected successfully'))
-.catch((err)=>console.log(err))
+// mongoDB connection
+const connect = () => {
+  mongoose.connect(db_url)
+  try {
+    console.log('DB connected successfully')
+  } catch (err) {
+    console.log(err)
+  }
+}
+// mongoose.connect(process.env.DBURL)
+// .then(()=>console.log('DB connected successfully'))
+// .catch((err)=>console.log(err))
 // jazzysburger routes
 app.use('/jazzyburger',jazzyBurgerRouter)
 
@@ -20,4 +30,7 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-app.listen(port,()=> console.log('app running on port 6060'))
+app.listen(port,()=> {
+  console.log(`server running on port ${port}`)
+  connect()
+})
